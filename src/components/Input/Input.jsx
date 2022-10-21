@@ -27,14 +27,14 @@ export class Input extends Component {
             onChange={this.props.hendlerChange}
             value={this.props.state.number}
             placeholder="Number"
-            type="text"
+            type="tel"
             name="number"
-            pattern="^\+?[0-9\s\-\(\)]+"
-            title="+380"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </label>
-        <button>Submit</button>
+        <button>Add Contact</button>
       </form>
     );
   }
