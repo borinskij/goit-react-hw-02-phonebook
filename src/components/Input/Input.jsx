@@ -1,9 +1,7 @@
-// import { nanoid } from 'nanoid';
 import { Component } from 'react';
 
 export class Input extends Component {
   render() {
-    // const id = nanoid();
     return (
       <form onSubmit={this.props.hendelSubmit}>
         <label>
@@ -30,11 +28,23 @@ export class Input extends Component {
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            // pattern="[\+]\d{3}\s[\(]\d{2}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </label>
+        <br />
         <button>Add Contact</button>
+        <br />
+        <br />
+
+        <input
+          onChange={this.props.hendlerChange}
+          value={this.props.state.filter}
+          placeholder="filter"
+          type="tel"
+          name="filter"
+        />
       </form>
     );
   }

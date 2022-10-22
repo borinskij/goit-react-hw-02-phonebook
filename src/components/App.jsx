@@ -40,11 +40,12 @@ export class App extends Component {
             state={this.state}
             hendlerChange={this.hendlerChange}
             hendelSubmit={this.hendelSubmit}
+            hendlerFilter={this.hendlerFilter}
           />
         </Section>
         <Section title={'Contacts'}>
           <Contacts
-            contacts={this.state.contacts}
+            state={this.state}
             // name={this.hendelSubmit}
             // number={this.number}
           />
