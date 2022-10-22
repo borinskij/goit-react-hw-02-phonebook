@@ -3,12 +3,23 @@ import { Component } from 'react';
 export class Contacts extends Component {
   render() {
     const { contacts, filter } = this.props.state;
-    console.log('contacts :', contacts.name);
-    console.log('filter :', filter);
-    const filterContact = contacts.filter(element => filter !== contacts);
+
+    function filterMap() {
+      if (filter !== '') {
+        let filterContact = contacts.filter(element =>
+          Object.values(element).some(
+            el => el.toLowerCase() === filter.toLowerCase()
+          )
+        );
+
+        return filterContact;
+      }
+      return contacts;
+    }
+    const renderList = filterMap();
     return (
       <ul>
-        {filterContact.map(item => (
+        {renderList.map(item => (
           <li key={item.id}>
             {item.name}: {item.number}
           </li>
