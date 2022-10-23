@@ -8,7 +8,6 @@ export class Input extends Component {
   };
 
   render() {
-    console.log('props', this.props);
     return (
       <form onSubmit={this.props.hendelSubmit}>
         <label>
