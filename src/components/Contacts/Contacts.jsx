@@ -3,7 +3,6 @@ import { Component } from 'react';
 export class Contacts extends Component {
   render() {
     const { contacts, filter } = this.props.state;
-
     function filterMap() {
       if (filter !== '') {
         let filterContact = contacts.filter(element =>
@@ -18,7 +17,12 @@ export class Contacts extends Component {
       <ul>
         {renderList.map(item => (
           <li key={item.id}>
-            {item.name}: {item.number}
+            <p>
+              {item.name}: {item.number}
+            </p>
+            <button onClick={() => this.props.hendelDelete(item.id)}>
+              Delete
+            </button>
           </li>
         ))}
       </ul>

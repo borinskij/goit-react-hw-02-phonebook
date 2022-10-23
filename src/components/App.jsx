@@ -6,15 +6,10 @@ import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
-    name: '',
-    number: '',
+    // name: '',
+    // number: '',
   };
 
   hendlerChange = event => {
@@ -26,11 +21,10 @@ export class App extends Component {
     event.preventDefault();
     const id = nanoid();
     const { name, number } = this.state;
-
-    // if (this.state.contacts.find(contact => contact.name === name){retur alert()}
+    if (this.state.contacts.some(contact => contact.name === name)) {
+      return alert(`${this.state.name} is already in contacts`);
+    }
     this.setState(prevState => {
-      const prev = prevState.contacts;
-      console.log('prev :', prev);
       return {
         contacts: [
           ...prevState.contacts,
@@ -38,7 +32,12 @@ export class App extends Component {
         ],
       };
     });
-    this.setState({ name: '', number: '' });
+    // this.setState({ name: '', number: '' });
+  };
+  hendelDelete = id => {
+    this.setState(prevState => {
+      return { contacts: prevState.contacts.filter(item => item.id !== id) };
+    });
   };
 
   render() {
@@ -55,6 +54,8 @@ export class App extends Component {
         <Section title={'Contacts'}>
           <Contacts
             state={this.state}
+            hendelDelete={this.hendelDelete}
+
             // name={this.hendelSubmit}
             // number={this.number}
           />

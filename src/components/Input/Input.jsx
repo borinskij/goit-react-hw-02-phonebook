@@ -1,7 +1,14 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Input extends Component {
+  state = {
+    valueName: this.props.state.name,
+    valueNumber: this.props.state.number,
+  };
+
   render() {
+    console.log('first', this.props);
     return (
       <form onSubmit={this.props.hendelSubmit}>
         <label>
@@ -11,7 +18,7 @@ export class Input extends Component {
             onChange={this.props.hendlerChange}
             type="text"
             name="name"
-            value={this.props.state.name}
+            value={this.valueName}
             placeholder="Name User"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -23,7 +30,7 @@ export class Input extends Component {
           Number <br />
           <input
             onChange={this.props.hendlerChange}
-            value={this.props.state.number}
+            value={this.valueNumber}
             placeholder="Number"
             type="tel"
             name="number"
@@ -49,3 +56,5 @@ export class Input extends Component {
     );
   }
 }
+
+Input.propTypes = {};
