@@ -8,7 +8,7 @@ export class Input extends Component {
   };
 
   render() {
-    console.log('first', this.props);
+    console.log('props', this.props);
     return (
       <form onSubmit={this.props.hendelSubmit}>
         <label>
@@ -57,4 +57,12 @@ export class Input extends Component {
   }
 }
 
-Input.propTypes = {};
+Input.propTypes = {
+  state: PropTypes.objectOf(
+    PropTypes.shape({
+      contacts: PropTypes.array,
+      name: PropTypes.string,
+      number: PropTypes.number,
+    })
+  ),
+};

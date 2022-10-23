@@ -48,7 +48,7 @@ export class App extends Component {
             state={this.state}
             hendlerChange={this.hendlerChange}
             hendelSubmit={this.hendelSubmit}
-            hendlerFilter={this.hendlerFilter}
+            // hendlerFilter={this.hendlerFilter}
           />
         </Section>
         <Section title={'Contacts'}>
