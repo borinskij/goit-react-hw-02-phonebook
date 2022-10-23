@@ -26,9 +26,11 @@ export class App extends Component {
     event.preventDefault();
     const id = nanoid();
     const { name, number } = this.state;
-    console.log('event', name);
+
     // if (this.state.contacts.find(contact => contact.name === name){retur alert()}
     this.setState(prevState => {
+      const prev = prevState.contacts;
+      console.log('prev :', prev);
       return {
         contacts: [
           ...prevState.contacts,
