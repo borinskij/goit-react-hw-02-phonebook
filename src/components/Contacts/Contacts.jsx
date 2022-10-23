@@ -7,11 +7,8 @@ export class Contacts extends Component {
     function filterMap() {
       if (filter !== '') {
         let filterContact = contacts.filter(element =>
-          Object.values(element).some(
-            el => el.toLowerCase() === filter.toLowerCase()
-          )
+          element.name.toLowerCase().includes(filter.toLowerCase())
         );
-
         return filterContact;
       }
       return contacts;
