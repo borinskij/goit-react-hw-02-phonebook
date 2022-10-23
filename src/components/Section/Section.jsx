@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './Section.module.css';
 export const Section = ({ title, children }) => {
   console.log('children :', children);
@@ -15,7 +15,7 @@ export const Section = ({ title, children }) => {
 //   "title": "Phonebook",
 //   "children": "<Input />"
 // }
-Section.propTypes = {
+// Section.propTypes = {
   // state: PropTypes.objectOf(
   //   PropTypes.shape({
   //     contacts: PropTypes.array.isRequired,
@@ -23,4 +23,4 @@ Section.propTypes = {
   //     number: PropTypes.number.isRequired,
   //   })
   // ),
-};
+// };
