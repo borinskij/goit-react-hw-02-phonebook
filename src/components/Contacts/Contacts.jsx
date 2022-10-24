@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Contacts extends Component {
   render() {
@@ -18,3 +19,8 @@ export class Contacts extends Component {
     );
   }
 }
+
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string.isRequired)),
+  hendelDelete: PropTypes.func.isRequired,
+};
