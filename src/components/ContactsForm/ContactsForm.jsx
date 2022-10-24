@@ -1,23 +1,31 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export class Input extends Component {
+export class Form extends Component {
   state = {
-    valueName: this.props.state.name,
-    valueNumber: this.props.state.number,
+    name: '',
+    number: '',
   };
-
+  hendlerChange = event => {
+    const { value, name } = event.target;
+    this.setState({ [name]: value });
+  };
+  hendelSubmit = event => {
+    event.preventDefault();
+    this.props.hendelSubmit(this.state.name, this.state.number);
+    this.setState({ name: '', number: '' });
+  };
   render() {
     return (
-      <form onSubmit={this.props.hendelSubmit}>
+      <form onSubmit={this.hendelSubmit}>
         <label>
           Name
           <br />
           <input
-            onChange={this.props.hendlerChange}
+            onChange={this.hendlerChange}
             type="text"
             name="name"
-            value={this.valueName}
+            value={this.state.name}
             placeholder="Name User"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -28,8 +36,8 @@ export class Input extends Component {
         <label>
           Number <br />
           <input
-            onChange={this.props.hendlerChange}
-            value={this.valueNumber}
+            onChange={this.hendlerChange}
+            value={this.state.number}
             placeholder="Number"
             type="tel"
             name="number"
@@ -43,25 +51,11 @@ export class Input extends Component {
         <button>Add Contact</button>
         <br />
         <br />
-
-        <input
-          onChange={this.props.hendlerChange}
-          value={this.props.state.filter}
-          placeholder="filter"
-          type="tel"
-          name="filter"
-        />
       </form>
     );
   }
 }
 
-Input.propTypes = {
-  state: PropTypes.objectOf(
-    PropTypes.shape({
-      contacts: PropTypes.array,
-      name: PropTypes.string,
-      number: PropTypes.number,
-    })
-  ),
+Form.propTypes = {
+  hendelSubmit: PropTypes.func,
 };
